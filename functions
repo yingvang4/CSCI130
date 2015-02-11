@@ -1,0 +1,48 @@
+// Practicing functions and constants in go
+
+package main
+
+import (
+	"fmt"
+)
+
+type Circle struct {
+	name   string
+	radius float64
+}
+
+const (
+	PI float64 = 3.14
+)
+
+func AreaCircle(radius float64) float64 {
+	return radius * radius * PI
+}
+
+func CircumferenceCircle(radius float64) float64 {
+	return 2 * PI * radius
+}
+
+func FindBoth(r float64) (area float64, circum float64) {
+	area = AreaCircle(r)
+	circum = CircumferenceCircle(r)
+	return
+}
+
+func PrintCircle(c Circle) {
+	temp1, temp2 := FindBoth(c.radius)
+	fmt.Println("A", c.name, "has a radius of", c.radius)
+	fmt.Println("It has an area of", temp1)
+	fmt.Println("It has a circumference of", temp2)
+	fmt.Println()
+}
+
+func main() {
+	var c1 = Circle{}
+	c1.name = "Pizza"
+	c1.radius = 11
+	PrintCircle(c1)
+
+	var c2 = Circle{"Half Dollar", 2}
+	PrintCircle(c2)
+}
